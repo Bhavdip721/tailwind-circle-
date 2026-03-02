@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricle</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+     <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-plus">
+
+  <!--text-xs: 0.75rem (12px)
+text-sm: 0.875rem (14px)
+text-base: 1rem (16px)
+text-lg: 1.125rem (18px)
+text-xl: 1.25rem (20px)
+text-2xl: 1.5rem (24px)
+text-3xl: 1.875rem (30px)
+text-4xl: 2.25rem (36px)
+text-5xl: 3rem (48px) -->
+<!--  1)translate +theme + layer and apply  -->
+   
+
+        <style type="text/tailwindcss">
+  @theme {
+    --color-primary: #0cbbc7;
+    --color-secondary: #099aa3;
+    --color-lightBg: #edfeff;
+    --color-matteGrey: #7c7c7c;
+    --color-award1:#fff5f3;
+    --color-award2:#fff0f9;
+    --color-award3:#ecffff;
+    --color-award4:#f6f4ff;
+    --color-award5:#fff9e7;
+    --color-award6:#ffede4;
+    --text-2xs:8px;
+     --font-plus: "Plus Jakarta Sans", sans-serif;
+
+   
+
+  }    
+    @layer components {
+    .btn--secondary {
+      @apply inline-block;
+      @apply px-[20px] py-[10px];
+      @apply bg-[#0cbbc7] text-white;
+      @apply font-bold text-[14px];
+      @apply transition-all duration-1000;
+      @apply hover:bg-[#099aa3];
+    }
+   .badge {
+      @apply inline bg-[#effeff] text-[#0cbbc7];
+      @apply px-[10px] py-[6px] rounded-[10px];
+      @apply text-[8px] uppercase tracking-[0.1em];
+    }
+
+    .card {
+      @apply bg-white border-2 border-white;
+     
+      @apply rounded-[5px];
+      @apply drop-shadow-lg;
+    }
+    .btn--primary {
+      @apply bg-[#0cbbc7] text-white font-bold;
+      @apply transition-all duration-1000;
+    }
+
+    .btn--primary:hover {
+      @apply bg-[#099aa3];
+    }
+     .container-custom {
+    @apply max-w-[944px] w-full mx-auto px-8 lg:px-0;
+  }
+    .container-full
+    {
+        @apply max-w-[1440px] w-full mx-auto
+    }
+  }
+  @layer utilities
+  {
+   .w-944 {
+     @apply max-w-[944px];
+  }
+
+  .w-70p {
+     @apply w-[70%]
+  }
+  
+  }
+     
+</style>
+   <!-- header -->
+    <header class="sticky top-0 z-50 bg-white">
+      
+        <!-- sidebar navigation  -->
+        <div id="mySidenav" class="h-full w-0 fixed z-10 top-0 left-0 bg-secondary overflow-x-hidden transition-all duration-500 pt-16">
+          <a
+            href="javascript:void(0)"
+            onclick="closeNav()"
+            class="absolute top-8 left-5 text-white text-3xl"
+            >&times;</a
+          >
+
+          <a
+            href="#"
+            onclick="closeNav()"
+            class="py-2 px-8 text-base text-white block"
+            >Feature</a
+          >
+          <a
+            href="#"
+            onclick="closeNav()"
+            class="py-2 px-8 text-base text-white block"
+            >Pricing</a
+          >
+          <a
+            href="#"
+            onclick="closeNav()"
+            class="py-2 px-8 text-base text-white block"
+            >Testimonials</a
+          >
+          <a
+            href="#"
+            onclick="closeNav()"
+            class="py-2 px-8 text-base text-white block"
+            >Company</a
+          >
+          <a
+            href="#"
+            onclick="closeNav()"
+            class="py-2 px-8 text-base text-white block"
+            >Contact</a
+          >
+        </div>
+
+        <span
+          onclick="openNav()"
+          class="absolute top-8 left-8 block sm:block md: block lg:hidden"
+          >&#9776;</span
+        >
+      <nav
+        class="container-full px-2 md:px-32 py-4 h-20  shadow-sm flex flex-row justify-between items-center"
+      >
+        <!-- navigation left -->
+        <div class="flex flex-row gap-10 text-sm">
+          <a href="#" class="hidden lg:block hover:text-primary">Feature</a>
+          <a href="#" class="hidden lg:block hover:text-primary">Pricing</a>
+          <a href="#" class="hidden lg:block hover:text-primary"
+            >Testimonials</a
+          >
+        </div>
+        <!-- navigation logo -->
+        <div class="flex flex-row items-center gap-1">
+          <img src="image/logo.svg" alt="logo_image" />
+          <img src="image/circle.svg" alt="logo_title"  />
+        </div>
+        <!-- navigation right -->
+        <div class="flex flex-row gap-10 items-center">
+          <a href="#" class="hidden text-sm lg:block  hover:text-primary">Company</a>
+          <a href="#" class="hidden text-sm lg:block hover:text-primary">Contact</a>
+
+          <button
+            class="px-4 text-sm md:px-12 py-1 text-md text-primary border-2 border-primary cursor-pointer hover:bg-primary hover:text-white transition"
+          >
+            Login
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main>
+        <!-- hero section  -->
+    <section
+      class="bg-[linear-gradient(rgba(193,240,243,0.6),rgba(177,241,246,0.6)),url('./image/hero-background.webp')] bg-cover bg-center"
+    > 
+      <div class="container-full">
+        <!-- hero contant -->
+        <div class="flex flex-col items-center pt-4 px-8 md:pt-16 md:px-0">
+          <!-- remain for flex -->
+          <h1 class=" md:text-3xl font-bold text-center text-4xl sm:w-full lg:text-5xl lg:w-4xl">
+            A powerful online engagement tool
+            that’s intuitive and simple to use.
+          </h1>
+
+          <p class="mt-4 md:text-xs text-center w-full sm:mt-6 text-sm md:w-md">
+            With stellar one-click reports and unmatched support, see how
+            
+            Circle will make a difference in your business.
+          </p>
+
+       
+            <button
+              class="btn--primary p-1.5 inline-flex items-center gap-1 mt-4  text-xs sm:p-2 md:text-base md:mt-8"
+            >
+              <span >Get started free</span>
+              <img src="image/right-arrow.svg" alt="right-arrow" class=" w-1.75 md:w-3" />
+            
+          </div>
+        </div>
+        <!-- hero image  -->
+        <div class="relative h-20 sm:h-32 md:h-36 lg:h-48 xl:h-56">
+          <img
+            src="./image/Mask-group.webp"
+            alt="group-photo"
+            class=" absolute top-6 sm:top-10 lg:top-15 
+           left-1/2 -translate-x-1/2
+           w-70p w-944" 
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- section customer -->
+    <section class="pt-24 sm:pt-28  w-944 w-full m-auto px-8  flex flex-col md:gap-8 gap-12 md:px-0 md:pt-42 lg:pt-60 xl:pt-64">
+        
+        <!-- customer header -->
+        <div class="text-center">
+          <span class="badge">Our Customers</span>
+          <h2 class="md:text-xl mt-2 text-3xl">
+            Trusted by <strong>100,000+ customers</strong> in 90+ countries
+          </h2>
+        </div>
+        <!-- customer logos -->
+        <div class="flex flex-row md:gap-4 gap-12 justify-center flex-wrap">
+          <img
+            src="./image/capgemini.svg"
+            alt="capgemini"
+          />
+          <img
+            src="./image/yamaha.svg"
+            alt="yamaha"
+          />
+          <img
+            src="./image/biacon.svg"
+            alt="biacon"
+          />
+          <img
+            src="./image/dell.svg"
+            alt="dell"
+          />
+          <img
+            src="./image/ck-birla.svg"
+            alt="birla"
+          />
+          <img
+            src="./image/shell.svg"
+            alt="shell"
+          />
+        </div>
+        <!-- customer records -->
+        <div
+          class="flex flex-row gap-4 lg:gap-8 justify-center flex-wrap  text-secondary"
+        >
+          <p class="text-sm">
+            &#10004;18281 <span class="text-black">signed up last month</span>
+          </p>
+          <p class="text-sm">
+            &#10004;GDPR- & CCPA <span class="text-black">-ready</span>
+          </p>
+          <p class="text-sm">
+            &#10004; Leader@G2 <span class="text-black">Summer</span>
+          </p>
+        </div>
+      
+        
+    
+    </section>
+
+    <!-- horizontal braek -->
+    <hr class="bg-black border-t opacity-10 w-70p mx-auto my-6 md:my-24"/>
+
+    <!-- section promise -->
+    <section class="px-8 container-custom flex flex-col gap-8 lg:px-0 sm:flex-row lg:gap-8">
+      
+      <!-- promise header -->
+        <div class="self-center flex-1">
+    
+          <span class="badge">OUR PROMISE</span>
+          <h2 class="text-xl lg:text-3xl mt-2 sm:mt-4">
+            Tool <strong>built for people.</strong>
+          </h2>
+          <!-- div wrap remain -->
+          <p class=" sm:w-full text-sm lg:text-base mt-4 sm:w-full lg:w-sm">
+            Whether you want to edit your Google Docs, resolve Jira issues, or
+            collaborate over Zoom.
+          </p>
+          <p class="sm:w-full  text-sm lg:text-base mt-6 lg:w-sm">
+            Circle has 100+ integrations with tools you already use and love.
+          </p>
+          
+            <button
+              class="btn--primary p-1.5 text-sm mt-4 md:p-2 md:text-base md:mt-12 font-bold"
+            >
+              Get start free
+                     </div>
+        </div>
+        <!-- promise image -->
+        <div class="flex-1 w-70p mx-auto h-auto lg:h-[480px]">
+          <img
+            src="./image/promis-image.webp"
+            alt="promis-image"
+            class="w-full h-full object-cover  rounded-sm"
+          />
+        </div>
+      
+       
+      
+        </section>
+
+        <!-- horizontal braek -->
+        <hr class="bg-black border-t opacity-10 w-70p mx-auto my-6 md:my-24" />
+
+    <!-- section award -->
+    <section class="px-8 container-custom lg:px-0">
+      
+        <!-- award header -->
+        <div class="text-center">
+          <span class="badge">AWARDS</span>
+          <h2 class="xl mt-2 md:text-3xl">
+            An <strong>award winning</strong> platform,
+            <strong>loved by customers.</strong>
+          </h2>
+        </div>
+       <!-- award lists  -->
+        <div
+          class="grid grid-cols-1  gap-x-4 gap-y-4 mt-8   text-center justify-items-stretch md:gap-y-12 md:mt-18 sm:grid-cols-2  sm:mt-8 lg:grid-cols-3 lg:md:justify-items-center"
+        >
+        <!-- award 1 -->
+          <div
+            class="flex flex-col items-center w-full gap-2 bg-award1 px-2 py-8 rounded-md  w-full lg:w-3xs"
+          >
+            <img
+              src="./image/award-1.svg"
+              alt="award1"
+              class="w-16 h-auto sm:w-20 h-auto"
+            />
+            <h4 class="text-sm font-bold sm:text-base w-full sm:w-40">
+              Market leader across 18 categories
+            </h4>
+          </div>
+           <!-- award 2 -->
+          <div
+            class="flex flex-col items-center w-full gap-2 bg-award2 px-2 py-8 rounded-md w-full lg:w-3xs"
+          >
+            <img
+              src="./image/award-2.svg"
+              alt="award2"
+              class="w-16 h-auto sm:w-20 h-auto"
+            />
+            <h4 class="text-sm font-bold sm:text-base w-full sm:w-40">
+              Most loved SaaS tool in 2021
+            </h4>
+          </div>
+           <!-- award 3 -->
+          <div
+            class="flex flex-col items-center w-full gap-2 bg-award3 px-2 py-8 rounded-md w-full lg:w-3xs"
+          >
+            <img
+              src="./image/award-3.svg"
+              alt="award3"
+              class="w-16 h-auto sm:w-20 h-auto lg:w-28"
+            />
+            <h4 class="text-sm font-bold sm:text-base w-full sm:w-40">
+              Category leader in 2022
+            </h4>
+          </div>
+           <!-- award 4 -->
+          <div
+            class="flex flex-col items-center w-full gap-2 bg-award4 px-2 py-8 rounded-md w-full lg:w-3xs"
+          >
+            <img
+              src="./image/award-4.svg"
+              alt="award4"
+              class="w-16 h-auto sm:w-20 h-auto lg:w-28"
+            />
+            <h4 class="text-sm font-bold sm:text-base w-full sm:w-40">
+              Most recommended tool in 2021
+            </h4>
+          </div>
+           <!-- award 5 -->
+          <div
+            class="flex flex-col items-center w-full gap-2 bg-award5 px-2 py-8 rounded-md w-full lg:w-3xs"
+          >
+            <img
+              src="./image/award-5.svg"
+              alt="award5"
+              class="w-12 h-auto sm:w-16 h-auto"
+            />
+            <h4 class="text-sm font-bold sm:text-base w-full sm:w-40">
+              Champion in survey tool 2022
+            </h4>
+          </div>
+           <!-- award 6 -->
+          <div
+            class="flex flex-col items-center w-full gap-2 bg-award6 px-2 py-8 rounded-md w-full lg:w-3xs"
+          >
+            <img
+              src="./image/award-6.svg"
+              alt="award6"
+              class="w-16 h-auto sm:w-20 h-auto"
+            />
+            <h4 class="text-sm font-bold sm:text-base w-full sm:w-40">
+              Top performer spring 2021
+            </h4>
+          </div>
+        </div>
+      </div>
+      <!-- horizontal break -->
+    
+    </section>
+
+    <!-- horizontal braek -->
+ <hr class="bg-black border-t opacity-10 w-70p mx-auto my-6 md:my-24" />
+    
+ <!-- development section -->
+    <section>
+        <!-- devleopment header -->
+      <div class="text-center">
+        <span class="badge">built for people</span>
+        <h2 class="text-xl sm:text-3xl mt-2">
+          <strong>Easy</strong> for beginners <strong>Powerful</strong>
+          for experts.
+        </h2>
+      </div>
+      <!-- overlap when screen small -->
+       <!-- development tabs -->
+      <div class="container-custom px-8 lg:px-0">
+        <!-- development tabs -->
+        <div class="flex flex-row overflow-x-auto justify-normal gap-8 mt-4 mb-2 sm:flex-row sm:justify-around md:mt-12">
+          <div class="flex flex-row items-center  gap-1   text-sm sm:text-lg">
+            <img src="./image/dev-logo1.svg" alt="Create" class=" w-4 h-auto sm:w-6 h-6" />
+            <span class="text-base">Create</span>
+          </div>
+          <div class="  flex flex-row items-center gap-1 text-sm sm:text-lg">
+            <img src="./image/dev-logo2.svg" alt="Distribute" class=" w-4 h-auto sm:w-6 h-6" />
+            <span class="text-base">Distribute</span>
+          </div>
+          <div class="  flex flex-row items-center gap-1 text-sm sm:text-lg">
+            <img src="./image/dev-logo3.svg" alt="Collect" class=" w-4 h-auto sm:w-6 h-6" />
+            <span class="text-base">Collect</span>
+          </div>
+          <div class=" flex flex-row items-center gap-1 text-sm sm:text-lg">
+            <img src="./image/dev-logo4.svg" alt="Analyze" class="w-4 h-auto sm:w-6 h-6" />
+            <span class="text-base">Analyze</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-lightBg  pt-8 pb-4 sm:pt-16">
+        <!-- devlopment tabs data -->
+        <div
+          class="flex flex-col container-custom px-8 sm:flex-row gap-8 lg:px-0"
+        >
+        
+          <div class="flex-1">
+            <h2 class="text-xl font-bold sm:text-3xl">Create</h2>
+            <h3 class="text-sm font-bold sm:text-base mt-2 md:mt-4">
+              Advanced research software
+            </h3>
+            <p class="text-sm sm:text-base mt-2 md:mt-4">
+              Ask the right questions and get the answers you need with the most
+              secure and collaborative survey platform on the market featuring
+              powerful logic, sophisticated analytics, and built-in automation
+              and integration.
+            </p>
+           
+              <button
+                class="btn--primary p-1.5  text-sm md:p-2 mt-8 md:mt-12 md:text-base font-bold"
+              >
+                Get start for free
+              </button>
+           
+          </div>
+          <div class="flex-1">
+            <img src="./image/dev-image.png" alt="dev-image"  class="  w-3/5 mx-auto sm:w-full h-auto "/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- testimonial -->    
+     <section class="pt-16">
+        <div class="container-custom px-8  flex flex-col gap-4 lg:px-0 lg:flex-row">
+           <!-- testimonial header -->
+            <div class=" w-full xl:w-2xs">
+            <span class="badge">Testimonials</span>
+            <h3 class="  text-xl  md:text-3xl  mt-4">
+              See how customers <strong>drive impact</strong>
+            </h3>
+            <div class="mt-8 md:mt-12">
+              <button class="btn--primary px-2 py-2 text-xs md:p-3 md:text-sm font-bold">See case studies</button>
+            </div>
+          </div>
+           <!-- testimonial image -->
+          <div class=" static flex flex-col flex-1 md:relative">
+            <div class="w-full h-[300px] md:w-[358px] md:h-[400px] relative">
+              <img
+                src="./image/testimonials-photo.png"
+                alt="photo"
+                class=" object-fill m-auto md:w-full h-full md:object-cover md:object-center"
+              />
+              
+                <img 
+                  src="./image/testimonials-photo1.svg"
+                  alt="background"
+                  class=" w-8 h-auto absolute  top-1/2 left-1/2
+                          -translate-x-1/2 -translate-y-1/2 md:w-16 "
+                />
+
+                <img
+                  src="./image/testimonials-photo2.svg"
+                  alt="play_button"
+                  class="absolute w-3 top-1/2 left-1/2
+       -translate-x-1/2 -translate-y-1/2 md:w-6 h-auto"
+                  
+                />
+             
+            </div>
+            <!-- testimonial paypal -->
+            <div class="  static w-4/5 m-auto bg-lightBg pl-4 py-4 md:absolute md:w-[358px]  md:right-28 md:bottom-0 lg:bottom-0 lg:right-58 xl:right-0">
+              <img src="./image/paypal.png" alt="paypal"  class="w-16 h-auto"/>
+
+              <p class=" text-sm md:text-base w-full md:w-2xs mt-4">
+                "I used to have a bunch of different tools I had to pay for,
+                with Circle you get everything in one bundle."
+              </p>
+              <div class="text-xs md:text-sm mt-4">
+                <p><strong>Michel Dedrick</strong></p>
+              
+              <p>Senior Conversion Optimizer</p>
+            </div>
+          </div>
+        </div>
+    </section>
+       <!-- horizontal braek -->
+        <hr class="bg-black border-t opacity-10 w-70p mx-auto my-6 md:my-24" />
+
+      <!-- section solution -->
+      <section class="container-custom flex flex-col gap-10 sm:flex-row lg:gap-0">
+      
+            <!-- soution header -->
+          <div class="flex-1 self-center md:self-center lg:self-center">
+            <h3 class="text-xl w-full  md:text-3xl lg:w-2xs">
+              Looking for a <strong>solution</strong> for your business?
+            </h3>
+            <p class=" text-sm md:text-base mt-4">
+              Check out Sogolytics enterprise feedback and experience management
+              platform.
+            </p>
+            <div class="mt-8 flex flex-row flex-wrap gap-2">
+                <button class=" btn--primary p-2 text-xs md:p-3 md:text-sm font-bold">Learn more</button>
+                <button class="text-primary font-bold text-xs p-2 border-primary border-1 md:p-3 text-sm hover:transition-1 hover:text-white hover:bg-[#099aa3]">Schedule a consultation</button>
+            </div>
+          </div>
+          <!-- solution image  -->
+          <div class="flex-1 justify-self-right flex justify-end">
+            <img src="./image/solution-image.png" alt="solution-image " class=" w-3/5 m-auto sm:w-full lg:w-[405px] h-auto" />
+          </div>
+        
+       
+      </section>
+
+      <!-- horizontal braek -->
+   <hr class="bg-black border-t opacity-10 w-70p mx-auto my-6 md:my-24" />
+      <!--  section resources  -->
+      <section>
+        <div class="container-full px-8 lg:px-0 ">
+            <!-- resources header -->
+          <div class="text-center">
+            <span class=" badge">Resources</span>
+
+            <h3 class="text-xl md:text-3xl mt-4">
+              <strong>Stay</strong> in the <strong>Know</strong>
+            </h3>
+          </div>
+          <!-- resources card   -->
+          <div class="flex flex-row flex-wrap justify-center gap-4 mt-6 md:mt-12">
+           <!-- card 1  -->
+            <div class="card w-4/5 sm:w-3/5 p-4 sm:pl-8 py-10 pr-4 lg:w-sm">
+              <img src="./image/re-image1.png" alt="card-image" class="card__image" class="w-full lg:w-2xs" />
+
+              <h4 class=" text-sm font-bold mt-4 md:text-base  w-full lg:w-2xs">
+                Excepteur sint occaecat cupidatat non proident
+              </h4>
+              <p class="text-xs mt-4  md:text-sm w-full lg:w-2xs">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+                aut fugit,sed quia consequuntur magni dolores eos
+              </p>
+              <p class="text-xs mt-4  md:text-sm  w-full lg:w-2xs">
+                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci veli
+              </p>
+              <button class="btn--primary p-2  mt-6 text-xs md:p-3 md:text-sm font-bold">Read more</button>
+            </div>
+             <!-- card 2 -->
+            <div class="card w-4/5 sm:w-3/5 p-4 sm:pl-8 py-10 pr-4 lg:w-sm">
+              <img src="./image/re-image2.png" alt="card-image" class="w-full lg:w-2xs" />
+
+              <h4 class=" text-sm mt-6 font-bold  md:text-base  w-full lg:w-2xs">
+                Quis nostrum exercitationem ullam corporis suscipit laboriosam
+              </h4>
+              <p class="text-xs mt-4  md:text-sm  w-full lg:w-2xs">
+                Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                corporis suscipit laboriosam.
+              </p>
+              <p class="text-xs mt-4  md:text-sm  w-full lg:w-2xs">
+                nisi ut aliquid ex ea commodi consequatur autem vel eum iure
+                reprehenderit
+              </p>
+              <button class=" btn--primary p-2 text-xs mt-4 md:mt-14 md:p-3 md:text-sm font-bold">Read more</button>
+            </div>
+            <!-- card 3  -->
+            <div class="card w-4/5 sm:w-3/5 p-4 sm:pl-8 py-10 pr-4 lg:w-sm">
+              <img src="./image/re-image3.png" alt="card_image" class="w-full lg:w-2xs" />
+
+              <h4 class=" text-sm mt-6 font-bold  md:text-base  w-full lg:w-2xs">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </h4>
+              <p class="text-xs mt-4  md:text-sm  w-full lg:w-2xs">
+                Coluptatem accusantium doloremque laudantium, totam rem aperiam
+              </p>
+              <p class="text-xs mt-4 md:text-sm  w-full lg:w-2xs">
+                Aaque ipsa quae ab illo inventore veritatis et quasi architecto
+                beatae vitae dicta sunt explicabo.
+              </p>
+              <button class="btn--primary p-2 text-xs mt-4 md:mt-14 md:p-3 md:text-sm font-bold">Read more</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <!-- section-background color for resources   -->
+      
+        <div class=" hidden lg:block -mt-90 h-[400px] bg-lightBg"></div>
+     
+      </main>
+      <!-- footer  -->
+       <footer class="bg-black text-white mt-12 lg:mt-0">
+         <!-- 1152 instend of 1140 -->
+         <div class="max-w-6xl mx-auto w-full pt-12 px-8 lg:px-0">
+         <!-- footer top  -->
+         <div class="flex flex-col gap-8">
+            <div class="flex flex-col gap-12 sm:flex-row sm:gap-0">
+              <div class="flex-1 relative">
+                <!-- left and top problem  -->
+                <img src="image/fo-imgae.png" alt="map" class=" w-32 absolute left-1/2 top-1/2 -translate-1/2"/>  
+                <p class="  absolute left-1/2 top-1/2 -translate-1/2 text-2xs lg:text-xs">
+                  Made with lots of ❤️ in San Francisco
+                </p>
+              </div>
+              <!-- footer links  -->
+              <div class=" self-center sm:flex-1 sm:pt-0">
+                <div class="flex flex-col gap-4  md:flex-row md:gap-8 justify-between">
+                    <div>
+                        <h3  id="footer__nav" class="text-base  mb-0 md:mb-8 md:text-lg">Products</h3>
+                        <ul class="text-xs md:text-sm mt-4 hidden md:block">
+                        <li  class="mb-4"><a href="#" class=" text-matteGrey hover:text-white ">Delta</a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">Sigma</a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">Zeta</a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">Alpha</a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">Acumen</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 id="footer__nav" class="text-base  mb-0 md:mb-8 md:text-lg">Resources</h3>
+                        <ul class="mt-2 text-xs md:text-sm mt-4  hidden md:block  ">
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">Help</a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-red"> Training Videos</a></li>
+                       
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white "> Webinars </a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white "> Request a Demo </a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">Create Surveys </a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white "> Quiz Maker</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 id="footer__nav" class="text-base  mb-0 md:mb-8 md:text-lg">Company</h3>
+                        <ul class="mt-2 text-sm  mt-4  hidden md:block">
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">About Us</a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">Careers</a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">Team</a></li>
+                        <li class="mb-4"><a href="#" class="text-matteGrey hover:text-white ">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    </div>
+              </div>
+            </div>
+          <!-- footer bottom  -->
+            <div class=" mb-8 md:mb-16">
+              <div class="horizontal-break"><hr class="horizontal bg-white  border-t opacity-10"  /></div>
+              <div class="flex  flex-col gap-8 flex-wrap justify-between mt-8 items-center lg:flex-row ">
+                <!-- footer copyright -->
+                <div class="text-xs text-matteGrey">
+                  <p>
+                    Copyright 2022 Circle. All rights reserved.
+                  </p>
+                </div>
+                <!-- footer social -->
+               <div class="flex flex-col gap-8 md:flex-row  md:gap-25">
+                 <div class="flex flex-row gap-2 self-center ">
+                  <img src="./image/linkedin.png" alt="linkdin" />
+                  <img src="./image/twitter.png" alt="twitter" />
+                </div>
+                <!-- footer terms -->
+                <div class=" self-center flex flex-col gap-4 sm:flex-row md:gap-2 flex-wrap text-xs">
+                   <a href="#" class="text-matteGrey hover:text-white ">Privacy Policy  </a> <span class="hidden sm:block">|</span>
+                   <a href="#" class="text-matteGrey hover:text-white "> Data & Security </a> <span class="hidden sm:block">|</span>
+                  <a href="#" class="text-matteGrey hover:text-white ">Terms of Service </a> <span class="hidden sm:block">|</span>
+                   <a href="#" class="text-matteGrey hover:text-white "> Data & Security</a>
+                </div>
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    <script src="tailwind_footer.js"></script>
+    <script src="nav.js"></script>
+  </body>
+</html>
